@@ -1,0 +1,58 @@
+{
+  "en": {
+    "navigation": {
+      "transactions": "Transactions",
+      "statistics": "Statistics",
+      "settings": "Settings"
+    },
+    "overview": {
+      "title": "Overview",
+      "income": "Income",
+      "expenses": "Expenses"
+    },
+    "actions": {
+      "addTransaction": "Add Transaction"
+    },
+    "transactions": {
+      "todayTitle": "Today's Transactions",
+      "groceryShopping": "Grocery Shopping"
+    },
+    "calendar": {
+      "title": "Calendar",
+      "comingSoon": "Calendar View Coming Soon"
+    },
+    "monthlyOverview": {
+      "title": "Monthly Overview",
+      "income": "Income",
+      "expenses": "Expenses"
+    }
+  },
+  "np": {
+    "navigation": {
+      "transactions": "लेनदेन",
+      "statistics": "तथ्याङ्क",
+      "settings": "सेटिङहरू"
+    },
+    "overview": {
+      "title": "समग्र विवरण",
+      "income": "आम्दानी",
+      "expenses": "खर्च"
+    },
+    "actions": {
+      "addTransaction": "लेनदेन थप्नुहोस्"
+    },
+    "transactions": {
+      "todayTitle": "आजको लेनदेन",
+      "groceryShopping": "किराना खरिद"
+    },
+    "calendar": {
+      "title": "पात्रो",
+      "comingSoon": "पात्रो दृश्य चाँडै आउँदैछ"
+    },
+    "monthlyOverview": {
+      "title": "मासिक समीक्षा",
+      "income": "आम्दानी",
+      "expenses": "खर्च"
+    }
+  }
+}
