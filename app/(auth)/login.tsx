@@ -1,9 +1,12 @@
 import { jsonRespone } from "@/types";
 import {  useEffect, useState } from "react";
+import { Feather } from "@expo/vector-icons"; 
 import { Text, TouchableOpacity, View ,TextInput, Button, StyleSheet} from "react-native";
 import * as SecureStore from "expo-secure-store"
 import useStore from "@/hooks/useStore";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
+import "../../style.css";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Index() {
   const [email ,setEmail] = useState<string>("")
@@ -15,6 +18,7 @@ useEffect(()=>{
   router.replace("/(home)/home")
  }
 },[authorized])
+
 const handlePress = async () => {
   const formData = new URLSearchParams();
   formData.append("email", email);
@@ -49,76 +53,124 @@ const handlePress = async () => {
 };
 
 return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Paisai Paisa</Text>
-      
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#666"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          value={email}
-          onChangeText={setEmail}
-        />
-        
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#666"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
+    <LinearGradient
+      colors={['#f0f4ff', '#e5e9ff']}
+      className="flex-1 justify-center p-6"
+    >
+      {/* Header Section */}
+      <View className="items-center mb-12">
+        <Text className="text-4xl font-extrabold text-gray-900 mb-2">
+          Paisai Paisa
+        </Text>
+        <Text className="text-lg text-gray-600">Smart Money Management</Text>
+        <View className="h-1 w-20 bg-indigo-500 rounded-full mt-4" />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Login</Text>
+      {/* Input Fields */}
+      <View className="space-y-6 mb-8">
+        <View className="relative">
+          <Feather
+            name="mail"
+            size={20}
+            color="#4f46e5"
+            style={{ position: 'absolute', left: 16, top: 20, zIndex: 10 }}
+          />
+          <TextInput
+            className="w-full bg-white/90 p-4 pl-12 rounded-2xl text-lg"
+            placeholder="Email address"
+            placeholderTextColor="#94a3b8"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            value={email}
+            onChangeText={setEmail}
+            style={{
+              borderColor: '#e0e7ff',
+              borderWidth: 1,
+              shadowColor: '#4f46e5',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.1,
+              shadowRadius: 4,
+            }}
+          />
+        </View>
+
+        <View className="relative">
+          <Feather
+            name="lock"
+            size={20}
+            color="#4f46e5"
+            style={{ position: 'absolute', left: 16, top: 20, zIndex: 10 }}
+          />
+          <TextInput
+            className="w-full bg-white/90 p-4 pl-12 rounded-2xl text-lg"
+            placeholder="Password"
+            placeholderTextColor="#94a3b8"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            style={{
+              borderColor: '#e0e7ff',
+              borderWidth: 1,
+              shadowColor: '#4f46e5',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.1,
+              shadowRadius: 4,
+            }}
+          />
+        </View>
+      </View>
+
+      {/* Login Button */}
+      <TouchableOpacity
+        onPress={handlePress}
+        style={{
+          backgroundColor: '#4f46e5',
+          padding: 20,
+          borderRadius: 16,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.1,
+          shadowRadius: 8,
+          elevation: 4,
+        }}
+      >
+        <Text className="text-center text-white text-lg font-semibold tracking-wide">
+          Sign In
+        </Text>
       </TouchableOpacity>
-    </View>
+  {/* Sign up */}
+      <Link href={"/(auth)/signup"} className="mt-4 "asChild>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#4f46e5',
+          padding: 20,
+          borderRadius: 16,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.1,
+          shadowRadius: 8,
+          elevation: 4,
+        }}
+      >
+        <Text className="text-center text-white text-lg font-semibold tracking-wide">
+          Sign Up
+        </Text>
+      </TouchableOpacity>
+      </Link>
+
+      {/* Additional Options */}
+      <TouchableOpacity className="mt-6 self-center">
+        <Text className="text-indigo-600 text-sm font-medium underline">
+          Forgot Password?
+        </Text>
+      </TouchableOpacity>
+
+      {/* Decorative Elements */}
+      <View className="absolute bottom-0 w-full flex-row justify-between opacity-20">
+        <View className="w-24 h-24 rounded-full bg-indigo-300 -mb-12 -ml-12" />
+        <View className="w-32 h-32 rounded-full bg-blue-300 -mr-16" />
+      </View>
+    </LinearGradient>
   );
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5',
-    padding: 20,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 40,
-  },
-  inputContainer: {
-    width: '100%',
-    marginBottom: 20,
-  },
-  input: {
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  button: {
-    backgroundColor: '#3498db',
-    padding: 15,
-    borderRadius: 10,
-    width: '100%',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '600',
-  },
-});
-
